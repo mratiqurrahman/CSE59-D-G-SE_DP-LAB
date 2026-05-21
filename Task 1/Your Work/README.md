@@ -301,7 +301,7 @@ Use Cases:
 
 ### ER Diagram
 
-<img src="erdiagram.png">
+<img src="images/erdiagram.png">
 
 ------------------------------------------------------------
 
