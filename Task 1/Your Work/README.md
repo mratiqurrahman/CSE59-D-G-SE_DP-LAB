@@ -1,255 +1,393 @@
 # Software Requirements Specification (SRS)
 
-## Tic-Tac-Toe Game
+# Tic-Tac-Toe Game
 
----
+------------------------------------------------------------
 
 # Preface
 
-This document provides the Software Requirements Specification (SRS) for the **Tic-Tac-Toe** application. It defines the system functionalities, user interactions, performance criteria, and design constraints necessary for the development and deployment of the game.
+This document provides the Software Requirements Specification (SRS) for the Tic-Tac-Toe application. It defines the system functionalities, user interactions, performance criteria, design constraints, and system models required for the development and deployment of the game.
 
----
+------------------------------------------------------------
 
 # Version History
 
-| Version | Description                                       |
-| ------- | ------------------------------------------------- |
-| 1.0     | Initial Draft                                     |
-| 1.1     | Added non-functional requirements and UI details  |
-| 1.2     | Added system models and game logic specifications |
+| Version | Description |
+|---------|-------------|
+| 1.0 | Initial Draft |
+| 1.1 | Added GUI and non-functional requirements |
+| 1.2 | Added system models and game logic |
+| 1.3 | Updated ER Diagram and relationships |
 
----
+------------------------------------------------------------
 
 # 1. Introduction
 
-## Purpose
+## 1.1 Purpose
 
-The **Tic-Tac-Toe** application is a standalone desktop game implemented in Java using Swing. It allows two players to play the classic Tic-Tac-Toe game, managing turns, determining winners or ties, and resetting the game board. The system is designed for intuitive gameplay and educational purposes.
+The Tic-Tac-Toe application is a standalone desktop-based game developed using Java and Swing. The application allows two users to play the classic Tic-Tac-Toe game on a 3×3 grid. The system manages player turns, validates moves, detects winners or ties, and provides reset functionality.
 
----
+The system is designed for educational purposes and to demonstrate object-oriented programming concepts and graphical user interface development using Java Swing.
 
-## Document Conventions
+------------------------------------------------------------
 
-This document follows the IEEE SRS standard using:
+## 1.2 Document Conventions
 
-* **Must** – Indicates mandatory features or requirements.
-* **Should** – Indicates recommended enhancements.
-* **May** – Indicates optional future improvements.
+This document follows the IEEE SRS documentation standard.
 
----
+| Keyword | Meaning |
+|---------|---------|
+| Must | Mandatory requirement |
+| Should | Recommended requirement |
+| May | Optional enhancement |
 
-## Intended Audience and Reading Suggestions
+------------------------------------------------------------
 
-| Audience                      | Purpose                                       |
-| ----------------------------- | --------------------------------------------- |
-| Developers & Project Managers | Guidance on implementing game logic and UI    |
-| QA/Testers                    | Validation of game mechanics and GUI behavior |
-| Students/Learners             | Understanding object-oriented GUI programming |
+## 1.3 Intended Audience
 
----
+| Audience | Purpose |
+|---------|---------|
+| Developers | Implement application features |
+| Testers | Validate system behavior |
+| Students | Learn Java GUI programming |
+| Project Managers | Understand project scope |
 
-## Scope
+------------------------------------------------------------
 
-The Tic-Tac-Toe system provides:
+## 1.4 Scope
 
-* 3x3 grid-based gameplay for two players
-* Turn-based player interaction (X and O)
-* Winner detection (rows, columns, diagonals)
-* Tie detection
-* Graphical user interface (GUI) with Java Swing
-* Reset functionality to restart the game
+The Tic-Tac-Toe application provides:
 
----
+- 3×3 grid-based gameplay
+- Two-player local gameplay
+- Turn-based interaction
+- Winner detection
+- Tie detection
+- Graphical User Interface (GUI)
+- Game reset functionality
+- Visual feedback for game results
 
-## References
+------------------------------------------------------------
 
-* Java Swing API Documentation
-* Object-Oriented Programming Standards
-* IEEE Standard 830-1998 (SRS Standard)
+## 1.5 References
 
----
+- Java Swing Documentation
+- IEEE Standard 830-1998
+- Object-Oriented Programming Principles
+
+------------------------------------------------------------
 
 # 2. Overall Description
 
-## Product Perspective
+## 2.1 Product Perspective
 
-The Tic-Tac-Toe application is a standalone Java desktop game with no external dependencies beyond the Java Runtime Environment (JRE). It provides a graphical interface for two players to play the game locally.
+The system is a standalone desktop application developed using Java Swing. It does not require internet connectivity or external databases. The application runs locally on desktop operating systems supporting Java Runtime Environment (JRE).
 
----
+------------------------------------------------------------
 
-## Product Functions
+## 2.2 Product Functions
 
-* **Game Board:** 3x3 grid with buttons representing cells.
-* **Player Turns:** Alternates between X and O automatically.
-* **Winner Detection:** Detects rows, columns, and diagonals for a win.
-* **Tie Detection:** Detects a tie when all cells are filled without a winner.
-* **Reset Functionality:** Resets board and game state for a new game.
-* **GUI Feedback:** Updates labels with current player, winner, or tie.
+The system provides the following functionalities:
 
----
+- Display a 3×3 game board
+- Allow players to place X or O symbols
+- Alternate turns automatically
+- Detect winning combinations
+- Detect tie conditions
+- Highlight winning or tied cells
+- Reset the game board
+- Display game status messages
 
-## User Classes and Characteristics
+------------------------------------------------------------
 
-| User Type | Description                  |
-| --------- | ---------------------------- |
-| Player 1  | Plays as "X"                 |
-| Player 2  | Plays as "O"                 |
-| Observer  | Watches gameplay and results |
+## 2.3 User Classes and Characteristics
 
----
+| User Type | Description |
+|-----------|-------------|
+| Player 1 | Uses symbol X |
+| Player 2 | Uses symbol O |
+| Observer | Watches gameplay |
 
-## Operating Environment
+------------------------------------------------------------
 
-* Java Runtime Environment (JRE 8+)
-* Desktop environment (Windows, macOS, Linux)
-* Java Swing GUI framework
+## 2.4 Operating Environment
 
----
+- Java Runtime Environment (JRE 8 or above)
+- Windows, Linux, or macOS
+- Java Swing Framework
 
-## Design and Implementation Constraints
+------------------------------------------------------------
 
-* 3x3 fixed grid for gameplay
-* Single-threaded, turn-based interaction
-* GUI must update in real time after each move
-* Game logic must prevent invalid moves (cell overwrite)
+## 2.5 Design and Implementation Constraints
 
----
+- Fixed 3×3 grid
+- Turn-based gameplay
+- Single-threaded execution
+- GUI updates must occur instantly
+- Occupied cells cannot be overwritten
 
-## Assumptions and Dependencies
+------------------------------------------------------------
 
-* Two players play locally on the same device
-* The application will run in a GUI-supported environment
-* Users are familiar with basic Tic-Tac-Toe rules
+## 2.6 Assumptions and Dependencies
 
----
+- Two users play on the same device
+- Users understand Tic-Tac-Toe rules
+- Java is installed on the system
+
+------------------------------------------------------------
 
 # 3. System Requirements Specification
 
-## Functional Requirements
+## 3.1 Functional Requirements
 
-### User Interface
+### 3.1.1 User Interface Requirements
 
-* The system **must** display a 3x3 button grid.
-* The system **must** display current player status at the top.
-* The system **must** provide a "Reset" button to restart the game.
+- The system must display a 3×3 button grid.
+- The system must display the current player's turn.
+- The system must provide a reset button.
+- The system must display winner or tie messages.
 
-### Player Turns
+------------------------------------------------------------
 
-* The system **must** alternate between "X" and "O" after each valid move.
-* The system **must** prevent a player from overwriting an occupied cell.
+### 3.1.2 Player Turn Requirements
 
-### Game Logic
+- The system must alternate between X and O.
+- The system must prevent invalid moves.
+- The system must disable already occupied cells.
 
-* The system **must** detect a winner in rows, columns, and diagonals.
-* The system **must** detect a tie if all cells are filled with no winner.
-* The system **must** highlight winning cells in green.
-* The system **must** indicate a tie with orange highlights.
+------------------------------------------------------------
 
-### Reset Functionality
+### 3.1.3 Game Logic Requirements
 
-* The system **must** clear all cell texts and reset colors when the reset button is clicked.
-* The system **must** reset the current player to "X" after reset.
-* The system **must** reset the turn counter and game-over state.
+- The system must detect row victories.
+- The system must detect column victories.
+- The system must detect diagonal victories.
+- The system must detect ties.
+- The system must highlight winning cells.
+- The system must stop gameplay after game over.
 
----
+------------------------------------------------------------
 
-## Non-Functional Requirements
+### 3.1.4 Reset Requirements
+
+- The system must clear all cells after reset.
+- The system must restore default colors.
+- The system must reset the current player to X.
+- The system must reset game status variables.
+
+------------------------------------------------------------
+
+## 3.2 Non-Functional Requirements
 
 ### Performance Requirements
 
-* The system **must** update the GUI immediately after a move.
-* The system **must** handle continuous gameplay without lag.
+- GUI response must be immediate.
+- The system must support continuous gameplay smoothly.
+
+------------------------------------------------------------
 
 ### Usability Requirements
 
-* The interface **should** be intuitive and easy to navigate.
-* The system **should** provide clear visual feedback for turns, wins, or ties.
+- Interface should be simple and user-friendly.
+- Game feedback should be visually clear.
 
-### Reliability and Availability
+------------------------------------------------------------
 
-* The system **must** accurately enforce game rules.
-* The system **must** prevent invalid moves and crashes.
+### Reliability Requirements
 
-### Maintainability and Support
+- The system must prevent crashes.
+- The system must enforce all game rules correctly.
 
-* The code **should** follow object-oriented principles for easy updates.
-* The system **should** log errors for debugging purposes.
+------------------------------------------------------------
 
-### Portability
+### Maintainability Requirements
 
-* The application **must** run on any desktop OS supporting Java.
-* The system **may** support future enhancements like online multiplayer.
+- The code should follow object-oriented principles.
+- The application should support future feature expansion.
 
----
+------------------------------------------------------------
+
+### Portability Requirements
+
+- The system must run on all desktop operating systems supporting Java.
+- Future versions may support online multiplayer.
+
+------------------------------------------------------------
 
 # 4. System Models
 
-## Context Diagram
+## 4.1 Context Diagram
 
-```
 [Player X] --> GUI --> [Game Logic] --> GUI --> [Player O]
-```
 
-## Activity Diagram
+------------------------------------------------------------
+
+## 4.2 Activity Diagram
 
 1. Start Game
-2. Player X moves → Update GUI → Check Winner/Tie
-3. Player O moves → Update GUI → Check Winner/Tie
-4. Repeat until Winner or Tie
-5. Optionally reset game
+2. Player X makes move
+3. Update GUI
+4. Check winner or tie
+5. Switch player
+6. Repeat until game ends
+7. Reset game if required
 
-## Use Case Diagram
+------------------------------------------------------------
 
-* **Players:** Make moves, view results
-* **System:** Update board, check winner, indicate tie, reset game
+## 4.3 Use Case Diagram
 
-## Sequence Diagram
+Actors:
+- Player X
+- Player O
 
-1. Player clicks a cell → Event triggers
-2. System updates cell → Switch player
-3. System checks winner/tie → Update GUI
+Use Cases:
+- Make move
+- View result
+- Reset game
 
-## Entity-Relationship Diagram
+------------------------------------------------------------
 
-* Entities: Player, Cell, Game
-* Attributes: Player {symbol}, Cell {status}, Game {turns, currentPlayer, gameOver}
+## 4.4 Sequence Diagram
 
----
+1. User clicks a cell
+2. Event handler processes click
+3. Cell updates symbol
+4. System checks game state
+5. GUI updates display
+
+------------------------------------------------------------
+
+## 4.5 Entity-Relationship Diagram
+
+### Entities
+
+1. Player
+2. Game
+3. Cell
+
+------------------------------------------------------------
+
+### Player Entity
+
+| Attribute | Description |
+|-----------|-------------|
+| player_id (PK) | Unique player identifier |
+| symbol | X or O |
+
+------------------------------------------------------------
+
+### Game Entity
+
+| Attribute | Description |
+|-----------|-------------|
+| game_id (PK) | Unique game identifier |
+| currentPlayer | Current player's turn |
+| turns | Number of moves |
+| gameOver | Game status |
+
+------------------------------------------------------------
+
+### Cell Entity
+
+| Attribute | Description |
+|-----------|-------------|
+| cell_id (PK) | Unique cell identifier |
+| row | Cell row |
+| column | Cell column |
+| status | Empty, X, or O |
+| game_id (FK) | Associated game |
+
+------------------------------------------------------------
+
+### ER Diagram
+
+                    +------------------+
+                    |      PLAYER      |
+                    +------------------+
+                    | PK player_id     |
+                    | symbol           |
+                    +------------------+
+                             |
+                             | plays
+                           (2:1)
+                             |
+                             v
+                    +------------------+
+                    |       GAME       |
+                    +------------------+
+                    | PK game_id       |
+                    | currentPlayer    |
+                    | turns            |
+                    | gameOver         |
+                    +------------------+
+                             |
+                             | contains
+                           (1:9)
+                             |
+                             v
+                    +------------------+
+                    |       CELL       |
+                    +------------------+
+                    | PK cell_id       |
+                    | row              |
+                    | column           |
+                    | status           |
+                    | FK game_id       |
+                    +------------------+
+
+------------------------------------------------------------
+
+### Relationship Description
+
+| Relationship | Cardinality | Description |
+|-------------|-------------|-------------|
+| Player → Game | 2 : 1 | Two players participate in one game |
+| Game → Cell | 1 : 9 | One game contains nine cells |
+
+------------------------------------------------------------
 
 # 5. System Evolution
 
-## Assumptions
+## 5.1 Future Enhancements
 
-* Multiplayer online support may be added in the future.
-* AI opponent functionality may be implemented later.
-* Enhanced UI themes may be added.
+- AI opponent support
+- Online multiplayer functionality
+- Scoreboard system
+- Enhanced UI themes
+- Sound effects and animations
 
-## Expected Changes
-
-* Integration with networked gameplay.
-* Integration with scoring or leaderboard systems.
-* Adaptive AI player for single-player mode.
-
----
+------------------------------------------------------------
 
 # 6. Appendices
 
-## Hardware Requirements
+## 6.1 Hardware Requirements
 
-* Desktop PC with JRE installed
-* Minimum resolution: 600x750 pixels
+- Desktop or Laptop Computer
+- Minimum resolution: 600×750
+- Keyboard and mouse
 
-## Database Requirements
+------------------------------------------------------------
 
-* Not required; game state maintained in memory
+## 6.2 Software Requirements
 
-##Technologies
+- Java Runtime Environment (JRE 8+)
+- Operating System: Windows/Linux/macOS
 
-| Layer              | Technology                    |
-| ------------------ | ----------------------------- |
-| Frontend           | Java Swing                    |
-| Backend/Game Logic | Java                          |
-| Platform           | Desktop (Windows/macOS/Linux) |
+------------------------------------------------------------
 
----
+## 6.3 Database Requirements
 
+- No database required
+- Game state maintained in memory
+
+------------------------------------------------------------
+
+## 6.4 Technologies Used
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | Java Swing |
+| Backend/Game Logic | Java |
+| Platform | Desktop Application |
+
+------------------------------------------------------------
