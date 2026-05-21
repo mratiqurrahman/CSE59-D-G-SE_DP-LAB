@@ -243,7 +243,7 @@ The Tic-Tac-Toe application is a standalone Java desktop game with no external d
 
 * Not required; game state maintained in memory
 
-## Suggested Technologies
+##Technologies
 
 | Layer              | Technology                    |
 | ------------------ | ----------------------------- |
